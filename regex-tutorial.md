@@ -10,6 +10,8 @@ A regular expression, or regex, is a written search pattern. It is typically use
 In this walkthrough, we will be talking about a regular expression written to match a URL string. 
 Like so - `/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/`
 
+https://www.google
+
 We will go through each component included in the expression, explaining what it does and the role it plays within the expression. If you need information on a particular component, use the table of contents below to skip ahead.
 
 </br>
@@ -53,7 +55,7 @@ Quantifiers are what they sound like, specifying the quantity of the characters 
 
 In our regular expression example, this string - `([\da-z\.-]+)`, uses the quantifier `+` to denote that we are searching for one or more characters matching the `[\da-z\.-]` paramater (which we'll explain later in bracket expressions).
 
-This piece of the regex string is essentially looking for any digit, lowercase letter, period, or dash. As in the letter string, `google` from the URL `https://www.google.com/`.
+This piece of the regex string is essentially looking for any digit, lowercase letter, period, or dash. As in the letter string, `www` from the URL `https://www.google.com/`.
 
 </br>
 
@@ -70,6 +72,12 @@ This applies to the beginning of any url that may start with `https://`, `http:/
 
 ### Character Classes
 </br>
+
+Character classes are also sometimes known as character sets. With character classes, the regex engine can be told to match only one of many characters. All of the characters you may wish to match simply need to be included inside of square brackets.
+
+Inside of this portion of our URL expression, `([a-z\.]{2,6})`, we can see the bracketed expression `[a-z\.]`, stating that in this place we are looking to match one of any character `a` through `z`, or the character `.`.
+
+This string would match with the `g` from `https://www.google.com`. However, note that the group is also followed by the quantifier `{2,6}`, telling us that the `www.` should be followed by anywhere from 2 to 6 single characters included in the `[a-z\.]` parameters.
 
 </br>
 
